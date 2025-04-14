@@ -1,7 +1,7 @@
 
 /* 
 ========================================================
-DATA CLEANING SCRIPT FOR LAYOFFS DATA
+DATA CLEANING PROJECT FOR LAYOFFS DATA
 Steps:
 1. Create a working copy of the data
 2. Identify and remove duplicates
@@ -43,12 +43,12 @@ WHERE row_num > 1
 ORDER BY company, industry;
 
 
-/* STEP 3: Remove rows with NULL values in key columns */
+/* STEP 3: Remove rows with NULL values */
 DELETE FROM copy_layoffs
 WHERE total_laid_off IS NULL AND percentage_laid_off IS NULL;
 
 
-/* STEP 4: Spot check potential duplicates */
+/* STEP 4: check for potential duplicates */
 SELECT *
 FROM copy_layoffs
 WHERE company IN ('Cazoo', 'Hibob', 'Yahoo', 'Wildfire Studios')
@@ -95,6 +95,6 @@ WHERE (company, location, industry, total_laid_off, percentage_laid_off, date, s
 );
 
 
-/* STEP 9: Final cleaned dataset */
+/* STEP 9: Final cleaned dataset check*/
 SELECT *
 FROM copy_layoffs;
